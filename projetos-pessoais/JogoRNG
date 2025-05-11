@@ -1,1 +1,105 @@
 
+// Nome: Eduardo Garcia
+// Matrícula: 251007968
+
+// Bibliotecas incluídas no código
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <locale>
+
+using namespace std;
+
+int main() {
+    // Configura o idioma para aceitar acentuação em português
+    setlocale(LC_ALL, "Portuguese");
+
+    // Inicializa a semente de números aleatórios
+    srand(time(NULL));
+
+    // Gera um número aleatório entre 1 e 20
+    int numero_secreto = rand() % 20 + 1;
+
+    int palpite; // Palpite do jogador
+    int tentativas = 3; // Total de tentativas
+
+    cout << "==========================" << endl;
+    cout << "  DESAFIO: SALVE O MUNDO!" << endl;
+    cout << "==========================" << endl;
+    cout << "Um supercomputador maligno gerou um número secreto entre 1 e 20..." << endl;
+    cout << "Você tem 3 tentativas para desativar a bomba!" << endl;
+    cout << "E se não acertar... O PLANETA VAI EXPLODIR" << endl;
+
+    for (int i = 1; i <= 3; i++) {
+        cout << "Tentativa " << i << " de 3. Digite seu palpite: ";
+        cin >> palpite;
+
+        // Verifica se o número está fora do intervalo permitido
+        if (palpite < 1 || palpite > 20) {
+            cout << "Número inválido! Digite um número entre 1 e 20." << endl;
+            i--; // Não desconta tentativa
+            continue;
+        }
+
+        // Verifica se acertou o número secreto
+        if (palpite == numero_secreto) {
+            cout << endl;
+            cout << "Parabéns! Você desativou a bomba!" << endl;
+            cout << "O número secreto era: " << numero_secreto << endl;
+            cout << R"(
+             _____
+        ,-:` \;',`'-, 
+      .'-;_,;  ':-;_,'.
+     /;   '/    ,  _`.-\
+    | '`. (`     /` ` \`|
+    |:.  `\`-.   \_   / |
+    |     (   `,  .`\ ;'|
+     \     | .'     `-'/
+     `.   ;/        .'
+       `'-._______.
+        Você salvou o planeta!
+            )" << endl;
+            return 0; // Sai do programa
+        } else {
+            // Diz se o palpite foi menor ou maior que o número secreto
+            if (palpite < numero_secreto) {
+                cout << "Dica: O número secreto é MAIOR!" << endl;
+            } else {
+                cout << "Dica: O número secreto é MENOR!" << endl;
+            }
+
+            // Fala quantas vidas ainda restam
+            cout << "Vidas restantes: " << (3 - i) << endl << endl;
+        }
+    }
+
+    // Se o jogador falhar nas 3 tentativas
+    cout << endl;
+    cout << "BOOM! A bomba explodiu! " << endl;
+    cout << "O número secreto era: " << numero_secreto << endl;
+    cout << R"(
+   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠀⡀⢀⠀⢠⠀⠀⠀⠀⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢠⢤⣀⠀⠀⠀⠈⣆⢧⠈⡆⢸⠀⠀⠀⢰⢡⠇⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀
+⠀⠀⠀⢀⠀⠀⣯⢀⣨⠃⠀⠀⠀⠸⡜⣄⣣⢸⠀⠀⠀⡜⡌⠀⠀⠀⠀⢀⡜⡁⠀⠀⠀⠀⠀
+⠀⠀⠙⢮⡳⢄⠈⠁⠀⢠⠴⠍⣛⣚⣣⢳⢽⡀⣏⣲⣀⢧⡥⠤⠶⢤⣠⢎⠜⠁⠀⠀⠀⠀⠀
+⠀⠠⣀⠀⠙⢦⡑⢄⢀⣾⣧⡎⠁⠀⠙⡎⡇⡇⡇⠹⢪⣀⡓⣦⢀⣼⣵⠋⢀⠴⣊⠔⠁⠀⠀
+⠀⠀⠈⠑⢦⣀⠙⣲⣝⢭⡚⠃⠀⠀⠀⠸⠸⣹⠁⠀⠀⠀⠉⣹⣪⣎⡸⢞⡵⠊⠁⣀⠀⠀⠀
+⠀⠀⠀⠀⠀⠈⣷⢯⣨⠷⣝⠦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠵⣪⢶⣙⡤⠖⢉⣀⠤⠖⠂
+⠀⠀⠀⠀⠀⢀⡞⢠⠾⠓⢮⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢬⣺⡯⢕⢲⠉⣥⣀⡀⠀⠀
+⠀⠀⢀⡤⣀⢈⡷⠻⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠁⠘⠀⢱⢾⠘⢇⢴⠁⠀⠀
+⠀⠀⢻⣀⡼⢘⣧⢀⡟⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡄⢙⣞⠆⠀⠀⠀⠀⠀
+⠀⠀⠀⠉⠀⢿⡀⠈⠧⡤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⠇⣹⣦⠇⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠸⢤⡴⢺⡧⣴⡶⢗⡣⠀⡀⠀⠀⠀⡄⠀⢀⣄⠢⣔⡞⣤⠦⡇⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⣀⡤⣖⣯⡗⣪⢽⡻⣅⠀⣜⡜⠀⠀⠀⠸⡜⡌⣮⡣⡙⢗⢏⡽⠁⠰⡏⠙⡆⠀⠀
+⠀⠀⣒⡭⠖⣋⡥⣞⣿⡚⠉⠉⢉⢟⣞⣀⣀⣀⠐⢦⢵⠹⡍⢳⡝⢮⡷⢝⢦⡀⠉⠙⠁⠀⠀
+⠐⠊⢡⠴⠚⠕⠋⠹⣍⡉⠹⢧⢫⢯⣀⣄⣀⠈⣹⢯⣀⣧⢹⡉⠙⢦⠙⣄⠑⢌⠲⣄⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠘⠧⡴⣳⣃⣸⠦⠴⠖⢾⣥⠞⠛⠘⣆⢳⡀⠈⠳⡈⠳⡄⠁⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢀⡜⡱⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⡄⢣⠀⠀⠉⠀⠈⠂⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢀⠞⡼⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⡀⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+
+    )" << endl;
+    cout << "O planeta foi destruído... " << endl;
+
+    return 0; // Sai do programa
+}
