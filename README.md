@@ -2,7 +2,7 @@
 Repositório profissional com projetos acadêmicos e pessoais
 
 ## Sobre
-Breve descrição do seu objetivo profissional e tipos de projetos incluídos
+Este github tem o objetivo de divulgar meus projetos pessoais e acadêmicos que desenvolvo durante minha graduação e após
 
 ## 📂 Estrutura
 - `projetos-academicos/` : Projetos desenvolvidos durante a graduação
